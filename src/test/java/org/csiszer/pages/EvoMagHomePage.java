@@ -11,7 +11,7 @@ import net.thucydides.core.pages.PageObject;
 
 import java.util.List;
 
-@DefaultUrl("http://en.wiktionary.org/wiki/Wiktionary")
+@DefaultUrl("https://www.evomag.ro/")
 public class EvoMagHomePage extends PageObject {
 
     @FindBy(name="search")
