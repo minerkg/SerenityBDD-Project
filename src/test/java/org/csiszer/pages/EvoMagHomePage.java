@@ -14,8 +14,22 @@ import java.util.List;
 @DefaultUrl("https://www.evomag.ro/")
 public class EvoMagHomePage extends PageObject {
 
-    @FindBy(name="search")
-    private WebElementFacade searchTerms;
+    @FindBy(css="#personal_header > div.account_header > div.c_header > div.phico.fa.fa-user-o")
+    private WebElementFacade loginIcon;
+
+    @FindBy(css = "#personal_header > div.account_header > div.account_head_details > div > a")
+    private WebElementFacade loginButton;
+
+    @FindBy(css = "#personal_header > div.account_header > div.account_head_details > div:nth-child(1) > a")
+    private WebElementFacade accountDetailsLink;
+
+    @FindBy(id = "searchString")
+    private WebElementFacade searchTextBox;
+
+    @FindBy(css = "#top_search > div > div.button_search > input")
+    private WebElementFacade searchButton;
+
+
 
     @FindBy(name="go")
     private WebElementFacade lookupButton;

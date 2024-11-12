@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 
 import org.csiszer.steps.serenity.EndUserSteps;
 
+
 @RunWith(SerenityRunner.class)
 public class SearchForProductStory {
 
