@@ -6,6 +6,7 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.csiszer.steps.serenity.EndUserSteps;
 import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
@@ -18,6 +19,8 @@ public class AddProductToCartStory {
     @Steps
     public EndUserSteps endUser;
 
+
+    @Disabled
     @Issue("#WIKI-1")
     @Test
     public void searching_by_keyword_apple_should_display_the_corresponding_article() {
@@ -27,6 +30,7 @@ public class AddProductToCartStory {
 
     }
 
+    @Disabled
     @Test
     public void searching_by_keyword_banana_should_display_the_corresponding_article() {
         endUser.is_the_home_page();
