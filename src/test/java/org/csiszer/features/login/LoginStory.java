@@ -5,6 +5,7 @@ import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Issue;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.util.EnvironmentVariables;
 import net.thucydides.junit.annotations.UseTestDataFrom;
 import org.csiszer.steps.serenity.EndUserSteps;
 import org.junit.Test;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
+import javax.inject.Inject;
 
 
 @UseTestDataFrom("src/test/resources/test_parameters/data.csv")
@@ -21,6 +23,9 @@ public class LoginStory {
     @Managed(uniqueSession = true)
     public WebDriver webdriver;
 
+    @Inject
+    EnvironmentVariables environmentVariables;
+
     private String userName;
     private String password;
 
@@ -28,21 +33,23 @@ public class LoginStory {
     public EndUserSteps endUser;
 
     @Issue("#WIKI-1")
+    @Test
+    public void loggingin_with_valid_data_should_proceed_to_home_page() {
+        endUser.is_the_home_page();
+        endUser.logging_in_with_credentials(
+                environmentVariables.getProperty("evomag.user"),
+                environmentVariables.getProperty("evomag.password")
+        );
+        endUser.should_see_the_home_page_and_account_details_should_be_available();
+
+
+    }
+
 //    @Test
-//    public void loggingin_with_valid_data_should_proceed_to_home_page() {
+//    public void loggingin_with_invalid_data_should_display_error_message() {
 //        endUser.is_the_home_page();
 //        endUser.logging_in_with_credentials(userName, password);
-//        endUser.should_see_the_home_page();
-//
-//
-//
+//        endUser.should_see_an_error_message();
 //    }
-
-    @Test
-    public void loggingin_with_invalid_data_should_display_error_message() {
-        endUser.is_the_home_page();
-        endUser.logging_in_with_credentials(userName, password);
-        endUser.should_see_an_error_message();
-    }
 
 }

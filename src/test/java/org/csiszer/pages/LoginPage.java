@@ -22,6 +22,8 @@ public class LoginPage extends PageObject {
     WebElementFacade errorMessageDiv;
 
 
+
+
     public void enter_username(String username) {
         usernameInputField.clear();
         usernameInputField.type(username);

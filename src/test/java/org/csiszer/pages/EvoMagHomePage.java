@@ -34,6 +34,7 @@ public class EvoMagHomePage extends PageObject {
     private WebElementFacade searchButton;
 
 
+
     public void accept_cookies() {
         cookieButton.waitUntilVisible().click();
     }
@@ -56,6 +57,11 @@ public class EvoMagHomePage extends PageObject {
     public void navigate_to_account_details() {
         loginIcon.click();
         accountDetailsLink.click();
+    }
+
+    public boolean isAccountDetailsLinkAvailable() {
+        loginIcon.click();
+        return accountDetailsLink.isDisplayed();
     }
 
 

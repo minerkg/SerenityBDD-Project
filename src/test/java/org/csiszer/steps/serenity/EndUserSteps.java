@@ -7,6 +7,7 @@ import org.csiszer.pages.LoginPage;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasItem;
+import static org.junit.Assert.*;
 
 
 public class EndUserSteps {
@@ -58,9 +59,8 @@ public class EndUserSteps {
     }
 
     @Step
-    public void should_see_the_home_page() {
-        //TODO implement when is good
-        assert(true);
+    public void should_see_the_home_page_and_account_details_should_be_available() {
+        assertTrue(evoMagHomePage.isAccountDetailsLinkAvailable());
     }
 
     public void should_see_an_error_message() {
