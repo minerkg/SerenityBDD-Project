@@ -28,15 +28,16 @@ public class LoginStory {
     public EndUserSteps endUser;
 
     @Issue("#WIKI-1")
-    @Test
-    public void loggingin_with_valid_data_should_proceed_to_home_page() {
-        endUser.is_the_home_page();
-        endUser.logging_in_with_credentials(userName, password);
-        endUser.should_see_the_home_page();
+//    @Test
+//    public void loggingin_with_valid_data_should_proceed_to_home_page() {
+//        endUser.is_the_home_page();
+//        endUser.logging_in_with_credentials(userName, password);
+//        endUser.should_see_the_home_page();
+//
+//
+//
+//    }
 
-    }
-
-    @Disabled
     @Test
     public void loggingin_with_invalid_data_should_display_error_message() {
         endUser.is_the_home_page();

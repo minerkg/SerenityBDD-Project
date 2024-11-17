@@ -64,7 +64,9 @@ public class EndUserSteps {
     }
 
     public void should_see_an_error_message() {
-        //TODO implement when is bad
-        assert(true);
+        assertThat(loginPage.getErrorMessage(),
+                containsString("Nu va puteti autentifica! Adresa de email introdusa este invalida!")
+        );
+
     }
 }

@@ -15,8 +15,11 @@ public class LoginPage extends PageObject {
     @FindBy(id = "LoginClientForm_Password")
     WebElementFacade passwordInputField;
 
-    @FindBy( xpath = "/html/body/div[4]/div[4]/div[2]/div[2]/div/div[2]/div/form/div/div[3]/input")
+    @FindBy( css = "body > div.main_wrap > div.wrap_inside_container.main_body_container > div.full_width_page > div.meniu_principal_centru_new > div > div.container_principal_dr > div > form > div > div:nth-child(3) > input")
     WebElementFacade loginButton;
+
+    @FindBy( className = "generic_error_message")
+    WebElementFacade errorMessageDiv;
 
 
     public void enter_username(String username) {
@@ -31,6 +34,10 @@ public class LoginPage extends PageObject {
 
     public void click_login() {
         loginButton.click();
+    }
+
+    public String getErrorMessage() {
+         return  errorMessageDiv.getText();
     }
 
 
