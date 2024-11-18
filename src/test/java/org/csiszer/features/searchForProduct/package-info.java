@@ -4,7 +4,7 @@
         text = {"In order to buy products",
                 "As shopper",
                 "I want to be able to look up the product which I want to buy"},
-        cardNumber = "#123"
+        cardNumber = "#Login"
 )
 package org.csiszer.features.searchForProduct;
 
