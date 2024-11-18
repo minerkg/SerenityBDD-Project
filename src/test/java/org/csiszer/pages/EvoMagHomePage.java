@@ -9,11 +9,15 @@ import java.util.stream.Collectors;
 import net.serenitybdd.core.annotations.findby.FindBy;
 
 import net.thucydides.core.pages.PageObject;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
 @DefaultUrl("https://www.evomag.ro/")
 public class EvoMagHomePage extends PageObject {
+
 
     @FindBy(id = "ez-cookie-notification__accept")
     private WebElementFacade cookieButton;
@@ -27,11 +31,14 @@ public class EvoMagHomePage extends PageObject {
     @FindBy(css = "#personal_header > div.account_header > div.account_head_details > div:nth-child(1) > a")
     private WebElementFacade accountDetailsLink;
 
-    @FindBy(id = "searchString")
+    @FindBy(xpath = "/html/body/div[4]/div[1]/div/div[1]/form/div/span/input[2]")
     private WebElementFacade searchTextBox;
 
-    @FindBy(css = "#top_search > div > div.button_search > input")
+    @FindBy(xpath = "/html/body/div[4]/div[1]/div/div[1]/form/div/div[1]/input")
     private WebElementFacade searchButton;
+
+    @FindBy(className = "npi_name")
+    private List<WebElementFacade> productSearchResults;
 
 
 
@@ -40,12 +47,16 @@ public class EvoMagHomePage extends PageObject {
     }
 
 
-    public void enter_keywords(String keyword) {
-        searchTextBox.type(keyword);
+    public void enter_product_name(String productName) {
+        searchTextBox.waitUntilEnabled();
+        searchTextBox.clear();
+        searchTextBox.type(productName);
+
     }
 
     public void lookup_products() {
-        searchButton.click();
+        withAction().sendKeys(Keys.ENTER).perform();
+
     }
 
     public void select_the_login_icon_and_click() {
@@ -65,9 +76,8 @@ public class EvoMagHomePage extends PageObject {
     }
 
 
-    public List<String> getDefinitions() {
-        WebElementFacade definitionList = find(By.tagName("ol"));
-        return definitionList.findElements(By.tagName("li")).stream()
+    public List<String> getProductNameResults() {
+        return productSearchResults.stream()
                 .map(element -> element.getText())
                 .collect(Collectors.toList());
     }

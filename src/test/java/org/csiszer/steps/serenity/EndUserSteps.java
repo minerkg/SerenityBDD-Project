@@ -1,13 +1,13 @@
 package org.csiszer.steps.serenity;
 
-import org.csiszer.pages.EvoMagHomePage;
 import net.thucydides.core.annotations.Step;
+import org.csiszer.pages.EvoMagHomePage;
 import org.csiszer.pages.LoginPage;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasItem;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 
 public class EndUserSteps {
@@ -17,8 +17,8 @@ public class EndUserSteps {
 
 
     @Step
-    public void enters(String keyword) {
-        evoMagHomePage.enter_keywords(keyword);
+    public void enters(String productName) {
+        evoMagHomePage.enter_product_name(productName);
     }
 
     @Step
@@ -27,8 +27,8 @@ public class EndUserSteps {
     }
 
     @Step
-    public void should_see_definition(String definition) {
-        assertThat(evoMagHomePage.getDefinitions(), hasItem(containsString(definition)));
+    public void should_see_results_with_the_given_product_name(String productName) {
+        assertThat(evoMagHomePage.getProductNameResults(), hasItem(containsString(productName)));
     }
 
     @Step
@@ -38,8 +38,8 @@ public class EndUserSteps {
     }
 
     @Step
-    public void looks_for(String term) {
-        enters(term);
+    public void looks_for(String productName) {
+        enters(productName);
         starts_search();
     }
 
@@ -63,6 +63,8 @@ public class EndUserSteps {
         assertTrue(evoMagHomePage.isAccountDetailsLinkAvailable());
     }
 
+
+    @Step
     public void should_see_an_error_message() {
         assertThat(loginPage.getErrorMessage(),
                 containsString("Nu va puteti autentifica! Adresa de email introdusa este invalida!")

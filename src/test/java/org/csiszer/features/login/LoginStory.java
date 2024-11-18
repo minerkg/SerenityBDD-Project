@@ -9,7 +9,6 @@ import net.thucydides.core.util.EnvironmentVariables;
 import net.thucydides.junit.annotations.UseTestDataFrom;
 import org.csiszer.steps.serenity.EndUserSteps;
 import org.junit.Test;
-import org.junit.jupiter.api.Disabled;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
