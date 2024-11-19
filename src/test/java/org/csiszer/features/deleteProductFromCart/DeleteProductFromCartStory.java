@@ -21,19 +21,19 @@ public class DeleteProductFromCartStory {
 
 
 
-    @Issue("#WIKI-1")
+    @Issue("#Delete from cart")
     @Test
-    public void searching_by_keyword_apple_should_display_the_corresponding_article() {
-//        endUser.is_the_home_page();
-//        endUser.looks_for("apple");
-//        endUser.should_see_results_with_the_given_product_name("A common, round fruit produced by the tree Malus domestica, cultivated in temperate climates.");
+    public void deleting_product_should_remove_the_deleted_item_from_the_cart() {
+        endUser.is_the_home_page();
+        endUser.logging_in_with_credentials(System.getenv("evomag_ro_user"),
+                System.getenv("evomag_ro_pass"));
+        endUser.looks_for("iphone 15 pro");
+        endUser.add_one_product_to_cart();
+        endUser.delete_one_product_from_cart("iPhone 15 Pro");
+        endUser.should_not_see_the_product_in_the_cart("iPhone 15 Pro");
+
 
     }
 
-    @Test
-    public void searching_by_keyword_banana_should_display_the_corresponding_article() {
-//        endUser.is_the_home_page();
-//        endUser.looks_for("pear");
-//        endUser.should_see_results_with_the_given_product_name("An edible fruit produced by the pear tree, similar to an apple but elongated towards the stem.");
-    }
+
 }
