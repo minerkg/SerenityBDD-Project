@@ -13,7 +13,10 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <serenity.version>2.3.2</serenity.version>
+        <evomag_ro_user>${env.EVOMAG_RO_USER}</evomag_ro_user>
+        <evomag_ro_pass>${env.EVOMAG_RO_PASS}</evomag_ro_pass>
     </properties>
+
 
     <repositories>
       <repository>

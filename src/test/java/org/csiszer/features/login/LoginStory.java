@@ -35,10 +35,8 @@ public class LoginStory {
     @Test
     public void loggingin_with_valid_data_should_proceed_to_home_page() {
         endUser.is_the_home_page();
-        endUser.logging_in_with_credentials(
-                environmentVariables.getProperty("evomag.user"),
-                environmentVariables.getProperty("evomag.password")
-        );
+        endUser.logging_in_with_credentials(System.getenv("evomag_ro_user"),
+                System.getenv("evomag_ro_pass"));
         endUser.should_see_the_home_page_and_account_details_should_be_available();
 
 
