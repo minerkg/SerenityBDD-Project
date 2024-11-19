@@ -1,8 +1,10 @@
 package org.csiszer.steps.serenity;
 
 import net.thucydides.core.annotations.Step;
+import org.csiszer.pages.CartPage;
 import org.csiszer.pages.EvoMagHomePage;
 import org.csiszer.pages.LoginPage;
+import org.csiszer.pages.SearchResultPage;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -14,7 +16,8 @@ public class EndUserSteps {
 
     LoginPage loginPage;
     EvoMagHomePage evoMagHomePage;
-
+    SearchResultPage searchResultPage;
+    CartPage cartPage;
 
     @Step
     public void enters(String productName) {
@@ -70,5 +73,15 @@ public class EndUserSteps {
                 containsString("Nu va puteti autentifica! Adresa de email introdusa este invalida!")
         );
 
+    }
+
+    @Step
+    public void add_one_product_to_cart() {
+        searchResultPage.add_one_product_to_cart();
+    }
+
+    @Step
+    public void should_see_the_cart_and_the_product_in_it(String productName) {
+        assertThat(cartPage.getCartProductNames(), hasItem(containsString(productName)));
     }
 }
