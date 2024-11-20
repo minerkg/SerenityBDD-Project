@@ -20,7 +20,6 @@ public class CartPage extends PageObject {
     @FindBy(className = "cart_article_row")
     List<WebElementFacade> cartItem;
 
-
     @FindBy(className = "cart_product_name_cell")
     List<WebElementFacade> cartProductNames;
 
@@ -41,6 +40,7 @@ public class CartPage extends PageObject {
     public void delete_product_from_cart(String productName) {
         cartItem.stream()
                 .filter(element -> element.findElement(By.className("cart_product_name_cell")).getText().contains(productName))
-                .forEach(element -> element.findElement(By.className("sterge_tab")).click());
+                .findFirst()
+                .ifPresent(element -> element.findElement(By.className("sterge_tab")).click());
     }
 }

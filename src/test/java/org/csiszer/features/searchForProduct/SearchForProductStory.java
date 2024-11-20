@@ -8,6 +8,7 @@ import org.csiszer.steps.serenity.EndUserSteps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+import org.springframework.core.annotation.Order;
 
 
 @RunWith(SerenityRunner.class)
@@ -19,7 +20,7 @@ public class SearchForProductStory {
     @Steps
     public EndUserSteps endUser;
 
-
+    @Order(3)
     @Issue("#Search-1")
     @Test
     public void searching_for_existing_product_should_display_the_some_products() {

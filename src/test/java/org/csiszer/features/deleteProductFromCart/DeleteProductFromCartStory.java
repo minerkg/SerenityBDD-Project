@@ -8,6 +8,7 @@ import org.csiszer.steps.serenity.EndUserSteps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+import org.springframework.core.annotation.Order;
 
 
 @RunWith(SerenityRunner.class)
@@ -22,6 +23,7 @@ public class DeleteProductFromCartStory {
     private final String productName = "iPhone 15 Pro";
 
 
+    @Order(4)
     @Issue("#Delete from cart")
     @Test
     public void deleting_product_should_remove_the_deleted_item_from_the_cart() {

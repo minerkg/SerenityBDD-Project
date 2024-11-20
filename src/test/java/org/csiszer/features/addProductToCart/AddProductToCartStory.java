@@ -9,6 +9,7 @@ import org.csiszer.steps.serenity.EndUserSteps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+import org.springframework.core.annotation.Order;
 
 
 @UseTestDataFrom("src/test/resources/test_parameters/products.csv")
@@ -25,6 +26,7 @@ public class AddProductToCartStory {
 
 
 
+    @Order(5)
     @Issue("#Add to cart")
     @Test
     public void clicking_to_add_to_cart_button_should_add_one_product_to_cart() {
@@ -34,6 +36,7 @@ public class AddProductToCartStory {
         endUser.looks_for(productName);
         endUser.add_one_product_to_cart();
         endUser.should_see_the_cart_and_the_product_in_it(productName);
+        endUser.delete_one_product_from_cart(productName);
     }
 
 }
