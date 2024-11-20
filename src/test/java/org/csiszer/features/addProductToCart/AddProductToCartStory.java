@@ -1,15 +1,18 @@
 package org.csiszer.features.addProductToCart;
 
-import net.serenitybdd.junit.runners.SerenityRunner;
+import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Issue;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.junit.annotations.UseTestDataFrom;
 import org.csiszer.steps.serenity.EndUserSteps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-@RunWith(SerenityRunner.class)
+
+@UseTestDataFrom("src/test/resources/test_parameters/products.csv")
+@RunWith(SerenityParameterizedRunner.class)
 public class AddProductToCartStory {
 
     @Managed(uniqueSession = true)
@@ -17,6 +20,8 @@ public class AddProductToCartStory {
 
     @Steps
     public EndUserSteps endUser;
+
+    private String productName;
 
 
 
@@ -26,9 +31,9 @@ public class AddProductToCartStory {
         endUser.is_the_home_page();
         endUser.logging_in_with_credentials(System.getenv("evomag_ro_user"),
                 System.getenv("evomag_ro_pass"));
-        endUser.looks_for("iphone 15 pro");
+        endUser.looks_for(productName);
         endUser.add_one_product_to_cart();
-        endUser.should_see_the_cart_and_the_product_in_it("iPhone 15 Pro");
+        endUser.should_see_the_cart_and_the_product_in_it(productName);
     }
 
 }

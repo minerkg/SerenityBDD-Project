@@ -9,6 +9,7 @@ import org.csiszer.pages.SearchResultPage;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertTrue;
 
 
@@ -88,5 +89,9 @@ public class EndUserSteps {
     public void delete_one_product_from_cart(String productName) {
         cartPage.delete_product_from_cart(productName);
 
+    }
+
+    public void should_not_see_the_product_in_the_cart(String productName) {
+        assertThat(cartPage.getCartProductNames(), not(hasItem(containsString(productName))));
     }
 }

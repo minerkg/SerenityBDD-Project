@@ -19,6 +19,7 @@ public class DeleteProductFromCartStory {
     @Steps
     public EndUserSteps endUser;
 
+    private final String productName = "iPhone 15 Pro";
 
 
     @Issue("#Delete from cart")
@@ -27,10 +28,10 @@ public class DeleteProductFromCartStory {
         endUser.is_the_home_page();
         endUser.logging_in_with_credentials(System.getenv("evomag_ro_user"),
                 System.getenv("evomag_ro_pass"));
-        endUser.looks_for("iphone 15 pro");
+        endUser.looks_for(productName);
         endUser.add_one_product_to_cart();
-        endUser.delete_one_product_from_cart("iPhone 15 Pro");
-       // endUser.should_not_see_the_product_in_the_cart("iPhone 15 Pro");
+        endUser.delete_one_product_from_cart(productName);
+        endUser.should_not_see_the_product_in_the_cart(productName);
 
 
     }
