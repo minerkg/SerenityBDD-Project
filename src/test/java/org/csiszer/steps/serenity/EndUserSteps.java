@@ -84,4 +84,9 @@ public class EndUserSteps {
     public void should_see_the_cart_and_the_product_in_it(String productName) {
         assertThat(cartPage.getCartProductNames(), hasItem(containsString(productName)));
     }
+
+    public void delete_one_product_from_cart(String productName) {
+        cartPage.delete_product_from_cart(productName);
+
+    }
 }
