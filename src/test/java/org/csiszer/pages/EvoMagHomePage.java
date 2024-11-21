@@ -31,7 +31,7 @@ public class EvoMagHomePage extends PageObject {
     @FindBy(css = "#personal_header > div.account_header > div.account_head_details > div:nth-child(1) > a")
     private WebElementFacade accountDetailsLink;
 
-    @FindBy(xpath = "/html/body/div[4]/div[1]/div/div[1]/form/div/span/input[2]")
+    @FindBy(className = "sn-suggest-input")
     private WebElementFacade searchTextBox;
 
     @FindBy(xpath = "/html/body/div[4]/div[1]/div/div[1]/form/div/div[1]/input")
